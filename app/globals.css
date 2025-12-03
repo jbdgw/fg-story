@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* Foster Greatness Brand Colors */
+  --color-fg-navy: #1a2949;
+  --color-fg-teal: #0067a2;
+  --color-fg-orange: #fa8526;
+  --color-fg-yellow: #faca2c;
+  --color-fg-teal-light: #00c8b7;
+  --color-fg-blue: #7abad8;
+  --color-fg-light-blue: #ddf3ff;
+  --color-fg-warm-bg: #faf9f7;
+
+  /* Font Families */
+  --font-family-sans: var(--font-nunito-sans), 'Century Gothic', 'Futura', sans-serif;
+  --font-family-serif: Georgia, 'Times New Roman', serif;
+
+  /* Font Sizes */
+  --font-size-h1: 3rem;        /* 48px */
+  --font-size-h2: 2.25rem;     /* 36px */
+  --font-size-h3: 1.75rem;     /* 28px */
+  --font-size-body-lg: 1.125rem; /* 18px */
+
+  /* Line Heights */
+  --line-height-letter: 1.8;
+  --line-height-data: 1.5;
+
+  /* Max Widths */
+  --max-width-letter: 680px;
+}
+
+body {
+  background: var(--color-fg-warm-bg);
+  color: var(--color-fg-navy);
+  font-family: var(--font-family-sans);
+}
+
+/* Utility Classes */
+@layer utilities {
+  .letter-text {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-letter);
+    color: var(--color-fg-navy);
+  }
+
+  .data-text {
+    font-family: var(--font-family-sans);
+    font-size: 1rem;
+    line-height: var(--line-height-data);
+  }
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 0.75in;
+    size: letter;
+  }
+
+  body {
+    background: white;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Ensure good page breaks */
+  section {
+    page-break-inside: avoid;
+  }
+
+  h2 {
+    page-break-after: avoid;
+  }
+
+  /* Remove shadows and borders for cleaner print */
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg {
+    box-shadow: none !important;
+  }
+}
